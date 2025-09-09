@@ -14,7 +14,7 @@ on:
       - master
 
 env:
-  DOCKER_IMAGE: tu-usuario/tu-imagen  # Cambia esto por tu usuario/imagen de Docker Hub
+  DOCKER_IMAGE: emehxd/fastapi-template
 
 jobs:
   build-and-push:
