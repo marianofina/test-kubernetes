@@ -82,11 +82,13 @@ spec:
   selector:
     app: fastapi
   ports:
-    - protocol: TCP
+    - name: http-main
+      protocol: TCP
       port: 8000
       targetPort: 8000
       nodePort: 30080  # Acceso desde exterior: http://TU-IP-EC2:30080
-    - protocol: TCP
+    - name: http-alt
+      protocol: TCP
       port: 80
       targetPort: 8000
       nodePort: 30090  # Acceso alternativo: http://TU-IP-EC2:30090
