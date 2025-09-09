@@ -69,7 +69,7 @@ spec:
 
 ---
 # ----------------------------- 
-# Service NodePort (backup - opcional)
+# Service NodePort (acceso externo garantizado)
 # ----------------------------- 
 apiVersion: v1
 kind: Service
@@ -85,7 +85,11 @@ spec:
     - protocol: TCP
       port: 8000
       targetPort: 8000
-      nodePort: 30080  # acceso directo por si el Ingress falla
+      nodePort: 30080  # Acceso desde exterior: http://TU-IP-EC2:30080
+    - protocol: TCP
+      port: 80
+      targetPort: 8000
+      nodePort: 30090  # Acceso alternativo: http://TU-IP-EC2:30090
 
 ---
 # ----------------------------- 
@@ -123,7 +127,7 @@ spec:
                 name: fastapi-service
                 port:
                   number: 8000
-    
+
 ---
 # ----------------------------- 
 # Horizontal Pod Autoscaler 
